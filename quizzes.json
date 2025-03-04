@@ -1,0 +1,20 @@
+{
+    "quizzes": [
+      {
+        "question": "Which organ filters blood and removes waste?",
+        "options": ["Kidney", "Heart", "Lung", "Liver"],
+        "answer": "Kidney"
+      },
+      {
+        "question": "Which organ is the control center for the nervous system?",
+        "options": ["Brain", "Heart", "Lung", "Stomach"],
+        "answer": "Brain"
+      },
+      {
+        "question": "Which organ is primarily responsible for oxygen exchange?",
+        "options": ["Lung", "Kidney", "Liver", "Heart"],
+        "answer": "Lung"
+      }
+    ]
+  }
+  

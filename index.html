@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Professional Internal Organs Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Model Viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Internal Organs Explorer</h1>
+      <nav>
+        <ul>
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#explorer" class="nav-link">3D Explorer</a></li>
+          <li><a href="#details" class="nav-link">Details</a></li>
+          <li><a href="#quiz" class="nav-link">Quiz</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section" data-aos="fade-in">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h2>Explore the Wonders of Human Anatomy</h2>
+        <p>
+          Discover detailed 3D models of internal organs, learn about their functions, and deepen your medical knowledge with our interactive experience.
+        </p>
+        <a href="#explorer" class="btn">Start Exploring</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D Explorer Section: Left Side Organ Names | Right Side Model Preview -->
+  <section id="explorer" class="section explorer-section" data-aos="fade-up">
+    <div class="container">
+      <h2>3D Explorer</h2>
+      <div class="explorer-wrapper">
+        <!-- Organ Selector on the Left -->
+        <div class="organ-selector">
+          <ul>
+            <li data-organ="heart" class="active">Heart</li>
+            <li data-organ="brain">Brain</li>
+            <li data-organ="lung">Lung</li>
+            <li data-organ="liver">Liver</li>
+            <li data-organ="kidney">Kidney</li>
+            <li data-organ="stomach">Stomach</li>
+            <li data-organ="spleen">Spleen</li>
+            <li data-organ="pancreas">Pancreas</li>
+          </ul>
+        </div>
+        <!-- 3D Model Preview on the Right -->
+        <div class="model-container">
+          <model-viewer id="organ-viewer"
+                        src="models/heart.glb"
+                        alt="3D model of Heart"
+                        auto-rotate
+                        camera-controls
+                        background-color="#f8f8f8">
+          </model-viewer>
+        </div>
+      </div>
+      <div class="organ-info" data-aos="fade-up">
+        <h3 id="organ-name">Heart</h3>
+        <p id="organ-description">
+          The heart is the core of the circulatory system, pumping blood to deliver oxygen and nutrients throughout the body.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details Section -->
+  <section id="details" class="section details-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Organ Details</h2>
+      <div class="details-grid">
+        <div class="detail-card" data-organ="heart">
+          <h3>Heart</h3>
+          <p>A powerful muscular organ that pumps blood throughout the body.</p>
+        </div>
+        <div class="detail-card" data-organ="brain">
+          <h3>Brain</h3>
+          <p>The control center managing thoughts, memories, and motor functions.</p>
+        </div>
+        <div class="detail-card" data-organ="lung">
+          <h3>Lung</h3>
+          <p>Responsible for the exchange of oxygen and carbon dioxide.</p>
+        </div>
+        <div class="detail-card" data-organ="liver">
+          <h3>Liver</h3>
+          <p>Detoxifies chemicals, metabolizes drugs, and produces bile.</p>
+        </div>
+        <div class="detail-card" data-organ="kidney">
+          <h3>Kidney</h3>
+          <p>Filters blood to remove waste and regulate fluid balance.</p>
+        </div>
+        <div class="detail-card" data-organ="stomach">
+          <h3>Stomach</h3>
+          <p>Breaks down food using acids and enzymes.</p>
+        </div>
+        <div class="detail-card" data-organ="spleen">
+          <h3>Spleen</h3>
+          <p>Filters blood and supports the immune system.</p>
+        </div>
+        <div class="detail-card" data-organ="pancreas">
+          <h3>Pancreas</h3>
+          <p>Produces digestive enzymes and hormones like insulin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz" class="section quiz-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Interactive Quiz</h2>
+      <p>Test your knowledge by answering the following questions:</p>
+      <div id="quiz-container">
+        <!-- Quiz questions will be dynamically injected here -->
+      </div>
+      <div id="quiz-feedback"></div>
+      <button id="next-quiz" class="quiz-next">Next Question</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Internal Organs Explorer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  </script>
+</body>
+</html>
