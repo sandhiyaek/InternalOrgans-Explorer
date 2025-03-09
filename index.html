@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Professional Internal Organs Explorer</title>
+  <title>Internal Organs Explorer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -14,33 +14,36 @@
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-          <a href="#hero" class="logo">Internal Organs Explorer</a>
-          <nav>
-            <ul>
-              <li><a href="#hero" class="nav-link active">Home</a></li>
-              <li><a href="#explorer" class="nav-link">3D Explorer</a></li>
-              <li><a href="#details" class="nav-link">Details</a></li>
-              <li><a href="#quiz" class="nav-link">Quiz</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+  <header>
+    <div class="header-container">
+      <a href="#hero" class="logo">Internal Organs Explorer</a>
+      <nav>
+        <ul>
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#explorer" class="nav-link">3D Explorer</a></li>
+          <li><a href="#details" class="nav-link">Details</a></li>
+          <li><a href="#quiz" class="nav-link">Quiz</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Hero Section with 3D Model Background -->
-<section id="hero" class="hero-section" data-aos="fade-in">
-    <!-- 3D Model Background -->
+  <!-- Hero Section with 3D Model Background and Particle Animation -->
+  <section id="hero" class="hero-section" data-aos="fade-in">
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- 3D Model Background with dark theme -->
     <model-viewer id="hero-model-bg"
-                  src="models/BrainStem.glb"
+                  src="models/hero.glb"
                   alt="3D Model Background"
                   auto-rotate
                   camera-controls
-                  background-color="transparent"
+                  background-color="#1a1a1a"
                   style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none;">
     </model-viewer>
     
-    <!-- Semi-transparent Overlay for readability -->
+    <!-- Semi-transparent Overlay for readability (reduced opacity) -->
     <div class="hero-overlay"></div>
     
     <!-- Hero Content -->
@@ -79,7 +82,18 @@
                         auto-rotate
                         camera-controls
                         background-color="#f8f8f8">
+            <!-- Hotspot for annotation -->
+            <button slot="hotspot-annotation"
+                    class="annotation"
+                    data-position="0 0.5 0"
+                    data-normal="0 0 1">
+              Heart
+            </button>
           </model-viewer>
+          <!-- Overlay Annotation (fallback) -->
+          <div id="organ-annotation" class="organ-annotation">
+            Heart
+          </div>
         </div>
       </div>
       <div class="organ-info" data-aos="fade-up">
@@ -152,13 +166,33 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js"></script>
+  <!-- AOS Animation -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <!-- GSAP Animation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <!-- Your main script -->
+  <script src="script.js"></script>
   <script>
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
       once: true
+    });
+    
+    // GSAP Animation for hero content
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(".hero-content", {
+      opacity: 0,
+      y: -50,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".hero-content",
+        start: "top 80%"
+      }
     });
   </script>
 </body>
